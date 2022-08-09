@@ -20,7 +20,8 @@ namespace Flights.Controllers
 		[HttpGet]
 		public IEnumerable<FlightRm> Search() => new FlightRm[]
 		{
-            new (   Guid.NewGuid(),
+
+        new (   Guid.NewGuid(),
                 "American Airlines",
                 random.Next(90, 5000).ToString(),
                 new TimePlaceRm("Los Angeles",DateTime.Now.AddHours(random.Next(1, 3))),
@@ -68,6 +69,7 @@ namespace Flights.Controllers
                 new TimePlaceRm("Le Bourget",DateTime.Now.AddHours(random.Next(1, 58))),
                 new TimePlaceRm("Zagreb",DateTime.Now.AddHours(random.Next(4, 60))),
                     random.Next(1, 853))
+
         };
 		
 		

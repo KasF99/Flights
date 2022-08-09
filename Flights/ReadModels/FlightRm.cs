@@ -4,7 +4,7 @@
 	(
 		Guid Id,
 		string Airline,
-		string Place,
+		string Price,
 		TimePlaceRm Departure,
 		TimePlaceRm Arrival,
 		int RemainingNumberOfSeats

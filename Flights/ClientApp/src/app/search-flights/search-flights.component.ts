@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FlightRm } from '../api/models';
+import { FlightService } from '../api/services';
 
 @Component({
   selector: 'app-search-flights',
@@ -8,38 +10,23 @@ import { Component, OnInit } from '@angular/core';
 export class SearchFlightsComponent implements OnInit {
 
   searchResult: FlightRm[] = [
-    {
-      airline: "American Airlines",
-      arrival: { time: Date.now().toString(), place: "Istanbul" },
-      departure: { time: Date.now().toString(), place: "Los Angeles"},
-      price: "350",
-      remainingNumberOfSeats: 500
-    },
-    {
-      airline: "Polish Airways",
-      arrival: { time: Date.now().toString(), place: "Warsaw" },
-      departure: { time: Date.now().toString(), place: "Berlin" },
-      price: "450",
-      remainingNumberOfSeats: 500
-    }
+   
   ]
 
-  constructor() { }
+  constructor(private flightService: FlightService) { }
 
   ngOnInit(): void {
   }
 
+  search() {
+    this.flightService.searchFlight({})
+      .subscribe(response => this.searchResult = response, this.handleError)
+      
+  }
+
+  private handleError(err: any) {
+    console.log(err)
+  }
+
 }
 
-export interface FlightRm {
-  airline: string;
-  arrival: TimePlaceRm;
-  departure: TimePlaceRm;
-  price: string;
-  remainingNumberOfSeats: number;
-}
-
-export interface TimePlaceRm {
-  place: string;
-  time: string;
-}

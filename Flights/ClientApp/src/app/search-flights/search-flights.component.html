@@ -62,12 +62,12 @@ Search for flight
           Passengers
         </div>
 
-        <button type="submit" class="btn-primary">
+        <button (click)="search()" type="submit" class="btn-primary">
           <i class="fas fa-search"></i>
         </button>
 
       </div>
-    </div>
+    </div> 
 
   </div>
 </div>
@@ -94,17 +94,17 @@ Search for flight
 
             <div class="col mt-2">
               <i class="fa-solid fa-location-dot"></i>
-              {{flight.departure.place}}
+              {{flight.departure?.place}}
             </div>
 
             <div class="col m-2">
               <i class="fa-regular"></i>
-              {{flight.departure.time | date}}
+              {{flight.departure?.time | date}}
             </div>
 
             <div class="col m-2">
               <i class="fa-regular "></i>
-              {{flight.departure.time | date: "shortTime"}}
+              {{flight.departure?.time | date: "shortTime"}}
             </div>
           </div>
           <div class="col">
@@ -137,17 +137,17 @@ Search for flight
 
               <div class="col mt-2">
                 <i class="fa-solid fa-location-dot"></i>
-                {{flight.arrival.place}}
+                {{flight.arrival?.place}}
               </div>
 
               <div class="col m-2">
                 <i class="fa-regular"></i>
-                {{flight.arrival.time | date}}
+                {{flight.arrival?.time | date}}
               </div>
 
               <div class="col m-2">
                 <i class="fa-regular "></i>
-                {{flight.arrival.time | date: "shortTime"}}
+                {{flight.arrival?.time | date: "shortTime"}}
               </div>
             </div>
           </div>
