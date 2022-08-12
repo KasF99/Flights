@@ -89,22 +89,21 @@ Search for flight
 
             </div>
             <div class="col m-3">
-             <i class="text-pimary fas fa-plane-departure" style="font-size: 25px; color: darkcyan"></i>
+             <i class="text-pimary fas fa-plane-departure" style="font-size: 25px; color: cornflowerblue"></i>
             </div>
 
             <div class="col mt-2">
-              <i class="fa-solid fa-location-dot"></i>
-              {{flight.departure?.place}}
+              <i class=" fa-solid fas fa-location-dot">  {{flight.departure?.place}}</i>
             </div>
 
-            <div class="col m-2">
+            <div class="col m-2 text-primary">
               <i class="fa-regular"></i>
               {{flight.departure?.time | date}}
             </div>
 
             <div class="col m-2">
-              <i class="fa-regular "></i>
-              {{flight.departure?.time | date: "shortTime"}}
+              <i class="fa-regular fa-clock"> {{flight.departure?.time | date: "shortTime"}}</i>
+            
             </div>
           </div>
           <div class="col">
@@ -132,22 +131,21 @@ Search for flight
           <div class="col">
             <div>
               <div class="col m-3">
-                <i class="text-pimary fas fa-plane-arrival" style="font-size:25px; color:darkcyan"></i>
+                <i class="text-pimary fas fa-plane-arrival" style="font-size:25px; color:cornflowerblue"></i>
               </div>
 
               <div class="col mt-2">
-                <i class="fa-solid fa-location-dot"></i>
-                {{flight.arrival?.place}}
+                <i class="fas fa-solid fa-location-dot"> {{flight.arrival?.place}}</i>
               </div>
 
-              <div class="col m-2">
+              <div class="col m-2 text-primary">
                 <i class="fa-regular"></i>
                 {{flight.arrival?.time | date}}
               </div>
 
               <div class="col m-2">
-                <i class="fa-regular "></i>
-                {{flight.arrival?.time | date: "shortTime"}}
+                <i class="fa-regular fa-clock"> {{flight.arrival?.time | date: "shortTime"}}</i>
+               
               </div>
             </div>
           </div>
