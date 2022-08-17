@@ -20,8 +20,7 @@ export class SearchFlightsComponent implements OnInit {
 
   search() {
     this.flightService.searchFlight({})
-      .subscribe(response => this.searchResult = response, this.handleError)
-      
+      .subscribe(response => this.searchResult = response, this.handleError) 
   }
 
   private handleError(err: any) {
