@@ -76,7 +76,7 @@ Search for flight
 
 <div *ngFor="let flight of searchResult">
   <div class="card text-dark mt-5 m-2 text-center">
-    <div class="card-body" style="padding: 20px; background-color: #F2EEEE ">
+    <div class="card-body" style="padding: 20px; background-color: #e5ecf26e ">
       <h6 class="card-title">{{flight.airline}}</h6>
       <div class="card-title" style="color:#ff6a00">
         {{flight.remainingNumberOfSeats}} remaining seats
@@ -117,8 +117,8 @@ Search for flight
             </div>
 
             <div class="col mt-2">
-              <i class="fa-solid fa-sack-dollar"></i>
-              {{flight.price}}
+
+              <i class="fa fa-usd" aria-hidden="true">{{flight.price}}</i>
             </div>
 
             <div class="col">

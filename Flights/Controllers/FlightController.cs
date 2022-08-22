@@ -1,5 +1,7 @@
-﻿using Flights.ReadModels;
+﻿using Flights.Dtos;
+using Flights.ReadModels;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace Flights.Controllers
 {
@@ -13,7 +15,9 @@ namespace Flights.Controllers
 		private readonly ILogger<FlightController> _logger;
 
 		static Random random = new Random();
-		private static FlightRm[] flights = SeedDB();
+
+	    private static FlightRm[] flights = SeedDB();
+		private static IList<BookDto> Bookings = new List<BookDto>();
 
 
 		public FlightController(ILogger<FlightController> logger)
@@ -44,6 +48,24 @@ namespace Flights.Controllers
 				return NotFound();	
 
 			return Ok(flight);	
+		}
+
+		[HttpPost]
+		[ProducesResponseType(400)] //client side error
+		[ProducesResponseType(500)] //mising data 
+		[ProducesResponseType(404)] //couldnt find the flight
+		[ProducesResponseType(200)]
+
+		public IActionResult Book(BookDto dto)
+		{
+			System.Diagnostics.Debug.WriteLine($"Booking new flight {dto.FlightId}");
+
+			var flightFound = flights.Any(f => f.Id == dto.FlightId);
+			if(flightFound == false)
+				return NotFound();
+
+			Bookings.Add(dto);
+			return CreatedAtAction(nameof(FindOrNull), new { id = dto.FlightId });
 		}
 
 		private static FlightRm[] SeedDB()
