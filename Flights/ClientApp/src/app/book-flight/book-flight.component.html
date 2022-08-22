@@ -8,7 +8,7 @@
       <div class="col">
         <div class="col m-3">
 
-          <i class="text-primary fas fa-plane-departure" style="font-size: 20px; color: cornflowerblue" ></i>
+          <i class="text-primary fas fa-plane-departure" style="font-size: 20px; color: cornflowerblue"></i>
         </div>
         <div class="col">
           <i class="fa-solid fa-location-dot">
@@ -83,3 +83,20 @@
     <br>
   </form>
 </div>
+
+
+<div *ngIf="number.invalid && (number.dirty || number.touched)" class="invalid-feedback d-block">
+
+  <div *ngIf="number.errors?.['required']">
+    How many seats do you want to book?
+  </div>
+
+  <div *ngIf="number.errors?.['min']">
+    You can not book for less than 1 seat!
+  </div>
+
+  <div *ngIf="number.errors?.['max']">
+    You can not book more than 254 seats!
+  </div>
+</div>
+
