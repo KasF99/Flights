@@ -26,9 +26,7 @@ export class RegisterPassengerComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-
-
+ 
   checkPassenger(): void
   {
 
