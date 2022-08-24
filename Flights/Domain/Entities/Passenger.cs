@@ -1,6 +1,6 @@
 ﻿namespace Flights.Domain.Entities
 {
-	public record Passanger(
+	public record Passenger(
 	string Email,
 	string FirstName,
 	string LastName,
