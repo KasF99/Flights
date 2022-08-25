@@ -35,9 +35,11 @@ namespace Flights.Controllers
 				dto.LastName,	
 				dto.gender
 				)
+
 				
 			);
-			System.Diagnostics.Debug.WriteLine("Count of passengers: {0}", _entities.Passengers.Count);
+
+			_entities.SaveChanges();
 			return CreatedAtAction(nameof(Find), new {email = dto.Email});
 		}
 

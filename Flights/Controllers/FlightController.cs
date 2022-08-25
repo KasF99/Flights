@@ -4,7 +4,7 @@ using Flights.ReadModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using Flights.Data;
-
+using Flights.Domain.Errors;
 
 namespace Flights.Controllers
 {
@@ -86,21 +86,11 @@ namespace Flights.Controllers
 			if(flight == null)
 				return NotFound();
 
-			if (flight.RemainingNumberOfSeats <= dto.NumberOfSeats) //domain rule validation
-			{
-				return Conflict(new { message = "The number of requested seats is exceeds the number of remaining seats " });
-			}
+			var error = flight.MakeBooking(dto.PassengerEmail, dto.NumberOfSeats);
 
-			flight.Bookings.Add
-			(
-				new Booking 
-				(
-					dto.PassengerEmail,
-					dto.NumberOfSeats
-				)
-			);
-
-			flight.RemainingNumberOfSeats -= dto.NumberOfSeats;
+			if (error is OverBookError)
+				return Conflict(new { message = "Not enough seats." });
+			_entities.SaveChanges();	
 
 			return CreatedAtAction(nameof(FindOrNull), new { id = dto.FlightId });
 
