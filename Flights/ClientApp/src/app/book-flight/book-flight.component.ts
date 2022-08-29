@@ -29,8 +29,7 @@ export class BookFlightComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if (!this.authService.currentUser)
-      this.routerService.navigate(['register-passenger'])
+   
 
     this.route.paramMap
       .subscribe(parameter => this.findFlight(parameter.get("flightId")))
